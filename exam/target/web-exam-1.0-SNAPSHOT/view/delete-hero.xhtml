@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:include src="templates/head.xhtml" />
+<h:body>
+    <ui:include src="templates/user-header.xhtml" />
+    <main>
+        <h1 class="text-center mt-2">Delete Hero</h1>
+        <hr class="hr-3"/>
+        <h:form class="mx-auto w-15">
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center text-white">
+                    <label for="name" class="h3 mb-2">Name</label>
+                </div>
+                <h:inputText class="form-control" id="name" name="name" value="#{detailsBean.getHero(request.getParameter('id')).name}" disabled="true" />
+            </div>
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center text-white">
+                    <label for="heroClass" class="h3 mb-2">Hero class</label>
+                </div>
+                <h:inputText class="form-control" id="heroClass" name="heroClass" value="#{detailsBean.getHero(request.getParameter('id')).heroClass}" disabled="true"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center text-white">
+                    <label for="level" class="h3 mb-2">Level</label>
+                </div>
+                <h:inputText type="number" class="form-control" id="level" name="level" value="#{detailsBean.getHero(request.getParameter('id')).level}" disabled="true"/>
+            </div>
+<!--            Не мога да разбера защо с deleteBean не се получава. Един и същ метод-->
+            <input type="hidden" value="#{detailsBean.getHero(request.getParameter('id')).id}" name="id"/>
+            <div class="button-holder d-flex justify-content-center">
+                <h:commandButton class="btn btn-danger text-white mb-3" action="#{detailsBean.delete}" value="Delete Hero" />
+            </div>
+        </h:form>
+    </main>
+    <ui:include src="templates/footer.xhtml" />
+</h:body>
+</html>
